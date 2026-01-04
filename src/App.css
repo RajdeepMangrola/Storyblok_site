@@ -116,3 +116,62 @@ body {
   width: 1.25em;
   height: 1.2
 }
+/* --- Mobile Responsive Fixes --- */
+
+@media (max-width: 768px) {
+  /* 1. Make the page scroll naturally and align text to the top */
+  .page-container {
+    justify-content: flex-start;
+    padding: 40px 15px;
+    font-size: 18px; /* Standardize font size for mobile */
+  }
+
+  /* 2. Stack Grid columns vertically */
+  .grid-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* 3. Stack About section (Image on top, Text below) */
+  .about-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-image-container, 
+  .about-content-container {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .about-heading {
+    font-size: 1.8rem; /* Shrink title so it doesn't wrap weirdly */
+    margin-bottom: 20px;
+  }
+
+  /* 4. Fix Feature cards to be full width */
+  .feature-card {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .feature-content img:not(.rt-emoji) {
+    width: 100% !important; /* Make images responsive */
+    height: auto !important;
+  }
+
+  .feature-content p:has(img:not(.rt-emoji)) {
+    height: auto; /* Allow the container to grow with the image */
+  }
+
+  /* 5. Shrink Teaser font */
+  .teaser-headline {
+    font-size: 1.5rem;
+  }
+
+  /* 6. Shrink the spinning logo so it doesn't take the whole screen */
+  .App-logo {
+    height: 30vmin;
+  }
+}
