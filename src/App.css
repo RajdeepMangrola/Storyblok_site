@@ -1,38 +1,118 @@
-.App {
+/* --- Global & Base Styling --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  color: white;
+  font-family: sans-serif;
+}
+
+.loading-state {
+  padding: 20px;
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* --- Page & Grid Layout --- */
+.page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* Change 'center' to 'flex-start' so content starts from the top */
+  justify-content: flex-start; 
+  padding: 80px 20px;
+  background-color: #282c34;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.grid-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* --- Teaser Component --- */
+.teaser-headline {
+  text-align: center;
+}
+
+/* --- About Component --- */
+.about-container {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.about-heading {
+  font-weight: bold;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.about-row {
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-image-container {
+  flex: 1 1 350px;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.about-content-container {
+  flex: 1.5 1 450px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* --- Feature Component --- */
+.feature-card {
+  padding: 24px;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  background: #fff;
+  color: #333; /* Dark text for light card */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-content img:not(.rt-emoji) {
+  width: 400px !important;
+  height: 200px !important;
+  object-fit: contain !important;
+  display: block;
+  margin: 0 auto 20px auto;
+  background: #fcfcfc;
+}
+
+.feature-content p:has(img:not(.rt-emoji)) {
+  margin: 0 !important;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-content h2 {
+  color: #00b3b0;
+  margin-bottom: 12px;
+}
+
+.feature-content p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.rt-emoji {
+  width: 1.25em;
+  height: 1.2
 }
