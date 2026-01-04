@@ -5,8 +5,15 @@ import './App.css';
 
 function App() {
   const location = useLocation();
-  let slug = location.pathname === "/" ? "home" : location.pathname.replace("/", "");
-  const story = useStoryblok(slug, { version: "draft" });
+
+  
+  let slug =
+    location.pathname === "/"
+      ? "home"
+      : location.pathname.replace("/", "");
+
+  const story = useStoryblok(slug, { version: "published" });
+
 
   if (!story || !story.content) {
     return <div className="loading-state">Loading...</div>;
