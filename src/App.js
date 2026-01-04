@@ -12,7 +12,7 @@ function App() {
       ? "home"
       : location.pathname.replace("/", "");
 
-  const story = useStoryblok(slug, { version: "published" });
+  const story = useStoryblok(slug, { version: "draft" });
 
 
   if (!story || !story.content) {
