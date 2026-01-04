@@ -2,7 +2,9 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
-
+// Removed unused Routes and Route to fix ESLint warnings
+import { BrowserRouter, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { storyblokInit, apiPlugin } from "@storyblok/react";
 
 import Page from "./components/Page";
@@ -31,28 +33,38 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    {/* Flexbox Wrapper to force footer to bottom */}
-    <div style={{ 
-      display: 'flex', 
-      flexDirection: 'column', 
-      minHeight: '100vh' 
-    }}>
-      
-      {/* 1. Header/Navigation */}
-      <nav style={{ padding: '20px', borderBottom: '1px solid #eee', background: '#fff', textAlign: 'center' }}>
-      <h2 style={{ margin: 0 }}>Task 1 for Storyblok - Dev Site</h2>
-      </nav>
+    {/* BrowserRouter must wrap the entire app for Links to work */}
+    <BrowserRouter>
+      <div style={{ 
+        display: 'flex', 
+        flexDirection: 'column', 
+        minHeight: '100vh',
+        fontFamily: 'sans-serif'
+      }}>
+        
+        {/* Navigation - Now works as a true SPA */}
+        <nav style={{ padding: '20px', background: '#fff', borderBottom: '1px solid #eee', display: 'flex', gap: '20px' }}>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Link to="/" style={{ fontWeight: 'bold', textDecoration: 'none', color: '#00b3b0' }}>Home</Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+          <Link to="/about" style={{ fontWeight: 'bold', textDecoration: 'none', color: '#00b3b0' }}>About Me</Link>
+          </motion.div>
+        </nav>
 
-      {/* 2. Main Body (App) - flex: 1 makes this fill all empty space */}
-      <main style={{ flex: 1 }}>
-        <App />
-      </main>
+        {/* Main Content */}
+        <main style={{ flex: 1 }}>
+          <App />
+        </main>
 
-      {/* 3. Footer */}
-      <footer style={{ padding: '20px', borderTop: '1px solid #eee', background: '#f9f9f9', textAlign: 'center' }}>
-      <p style={{ margin: 0, color: '#666' }}>Task 1 for Storyblok - Technical Assessment</p>
-      </footer>
+        {/* Footer */}
+        <footer style={{ padding: '20px', borderTop: '1px solid #eee', background: '#f9f9f9', textAlign: 'center' }}>
+          <p style={{ margin: 0, color: '#666', fontSize: '0.9rem' }}>
+            Task 1 for Storyblok - Rajdeep Mangrola
+          </p>
+        </footer>
 
-    </div>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>
 );
