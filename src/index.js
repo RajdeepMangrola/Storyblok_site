@@ -60,7 +60,7 @@ root.render(
         {/* Footer */}
         <footer style={{ padding: '20px', borderTop: '1px solid #eee', background: '#f9f9f9', textAlign: 'center' }}>
           <p style={{ margin: 0, color: '#666', fontSize: '0.9rem' }}>
-            Task 1 for Storyblok - Rajdeep Mangrola
+            Storyblok Site w/ React - Rajdeep Mangrola
           </p>
         </footer>
 
