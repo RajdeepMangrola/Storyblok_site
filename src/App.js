@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { BrowserRouter } from 'react-router-dom';
 import { useStoryblokApi } from '@storyblok/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
 
-// ── Page-level component ─────────────────────────────────────────────────────
 import StoryblokPage from './components/Page';
 
 const STORYBLOK_VERSION = process.env.REACT_APP_STORYBLOK_VERSION || 'draft';
 
-// ── Page transition variants ─────────────────────────────────────────────────
 const pageVariants = {
   initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0 },
   exit:    { opacity: 0, y: -12 },
 };
 
-// ── Animated Routes wrapper ──────────────────────────────────────────────────
 function AnimatedRoutes() {
   const location = useLocation();
   const storyblokApi = useStoryblokApi();
@@ -88,11 +84,7 @@ function AnimatedRoutes() {
   );
 }
 
-// ── App root ─────────────────────────────────────────────────────────────────
+// BrowserRouter lives in index.js — do NOT add it here
 export default function App() {
-  return (
-    <BrowserRouter>
-      <AnimatedRoutes />
-    </BrowserRouter>
-  );
+  return <AnimatedRoutes />;
 }
