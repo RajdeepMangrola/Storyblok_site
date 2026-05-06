@@ -67,13 +67,9 @@ root.render(
           <App />
         </main>
 
-        <footer style={{
-          padding: "20px",
-          borderTop: "1px solid #eee",
-          background: "#f9f9f9",
-          textAlign: "center",
-        }}>
-          <p style={{ margin: 0, color: "#666", fontSize: "0.9rem" }}>
+        {/* Footer */}
+        <footer style={{ padding: '20px', borderTop: '1px solid #eee', background: '#f9f9f9', textAlign: 'center' }}>
+          <p style={{ margin: 0, color: '#666', fontSize: '0.9rem' }}>
             Storyblok Site w/ React - Rajdeep Mangrola
           </p>
         </footer>

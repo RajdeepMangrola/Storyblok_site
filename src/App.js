@@ -22,8 +22,7 @@ function AnimatedRoutes() {
 
   const slug = location.pathname === '/' ? 'home' : location.pathname.replace(/^\//, '');
 
-  useEffect(() => {
-    let cancelled = false;
+  const story = useStoryblok(slug, { version: "draft" });
 
     const fetchStory = async () => {
       setLoading(true);
