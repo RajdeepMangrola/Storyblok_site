@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useStoryblokApi } from '@storyblok/react';
+import { useStoryblokApi, StoryblokComponent } from '@storyblok/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import './App.css';
-
-import StoryblokPage from './components/Page';
 
 const STORYBLOK_VERSION = process.env.REACT_APP_STORYBLOK_VERSION || 'draft';
 
@@ -77,14 +75,20 @@ function AnimatedRoutes() {
         transition={{ duration: 0.3, ease: 'easeInOut' }}
       >
         <Routes location={location}>
-          <Route path="*" element={<StoryblokPage blok={story.content} />} />
+          <Route
+            path="*"
+            element={
+              // StoryblokComponent automatically picks the right component
+              // based on story.content.component ("page", "about", etc.)
+              <StoryblokComponent blok={story.content} />
+            }
+          />
         </Routes>
       </motion.div>
     </AnimatePresence>
   );
 }
 
-// BrowserRouter lives in index.js — do NOT add it here
 export default function App() {
   return <AnimatedRoutes />;
 }
