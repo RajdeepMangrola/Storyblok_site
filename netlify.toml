@@ -1,3 +1,8 @@
+[build]
+  command   = "npm run build"
+  publish   = "build"
+
+# ── SPA redirect ─────────────────────────────────────────────────────────────
 [[redirects]]
   from   = "/*"
   to     = "/index.html"

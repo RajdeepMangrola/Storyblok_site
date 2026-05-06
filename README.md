@@ -2,7 +2,7 @@
 
 A modern, dynamic website built with **React**, **Storyblok (Headless CMS)**, and **Framer Motion**. This project demonstrates a seamless integration between a powerful CMS and a high-performance frontend, featuring smooth route transitions and responsive design.
 
-Link: https://rajdeeptask1devfinal.netlify.app/about
+Link: https://rajdeeptask1prodfinal.netlify.app/
 
 ## ✨ Features
 

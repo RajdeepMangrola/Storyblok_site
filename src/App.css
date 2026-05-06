@@ -80,7 +80,13 @@ body {
   border-radius: 12px;
   background: #fff;
   color: #333; /* Dark text for light card */
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
@@ -96,26 +102,461 @@ body {
 
 .feature-content p:has(img:not(.rt-emoji)) {
   margin: 0 !important;
-  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 220px;
 }
 
 .feature-content h2 {
   color: #00b3b0;
   margin-bottom: 12px;
+  margin-top: 0;
 }
 
 .feature-content p {
   line-height: 1.6;
   margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.feature-content ul, 
+.feature-content ol {
+  margin: 10px 0;
+  padding-left: 20px;
 }
 
 .rt-emoji {
   width: 1.25em;
-  height: 1.2
+  height: 1.2em;
 }
+
+/* --- RESUME WEBSITE STYLES --- */
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.hero-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin: 0 0 20px 0;
+  opacity: 0.95;
+}
+
+.hero-summary {
+  font-size: 1.2rem;
+  margin: 20px 0;
+  line-height: 1.6;
+  opacity: 0.9;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-contact {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-contact a,
+.hero-contact span {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hero-contact a:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 60px 0 30px 0;
+  color: #333;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.subsection-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 25px 0 15px 0;
+  color: #444;
+}
+
+/* Experience Section */
+.experience-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.experience-item {
+  border-left: 4px solid #667eea;
+  padding-left: 25px;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  border-left-color: #764ba2;
+  transform: translateX(10px);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.job-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 0;
+}
+
+.job-dates {
+  font-size: 0.95rem;
+  color: #999;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.job-description {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.job-description ul {
+  margin: 10px 0;
+  padding-left: 20px;
+}
+
+.job-description li {
+  margin: 8px 0;
+}
+
+/* Skills Section */
+.skills-section {
+  background: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.skills-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.skill-category {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+  transform: translateY(-5px);
+}
+
+.category-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0 0 15px 0;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+  color: #667eea;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1px solid #667eea30;
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: 1px solid transparent;
+}
+
+/* Education Section */
+.education-section {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.education-item {
+  background: #f0f4ff;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  background: #e8eeff;
+  transform: translateX(5px);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.degree-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.year {
+  font-size: 0.95rem;
+  color: #999;
+  font-weight: 500;
+}
+
+.institution {
+  font-size: 1.05rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 5px 0 0 0;
+}
+
+.gpa {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 8px 0 0 0;
+}
+
+.certifications-list {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.certification-item {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.certification-item:last-child {
+  border-bottom: none;
+}
+
+.cert-name {
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 5px 0;
+}
+
+.cert-desc {
+  font-size: 0.95rem;
+  color: #666;
+  margin: 0;
+}
+
+/* Projects Section */
+.projects-section {
+  background: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.projects-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.project-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+  transform: translateY(-8px);
+}
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.project-description {
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+  flex-grow: 1;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tech-badge {
+  display: inline-block;
+  background: #667eea;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.project-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  align-self: flex-start;
+}
+
+.project-link:hover {
+  color: #764ba2;
+  transform: translateX(5px);
+}
+
+/* Contact Section */
+.contact-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-content {
+  max-width: 700px;
+}
+
+.contact-message {
+  font-size: 1.2rem;
+  margin: 20px 0 40px 0;
+  opacity: 0.9;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.contact-link {
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 2px solid white;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background: white;
+  color: #667eea;
+  transform: scale(1.05);
+}
+
 /* --- Mobile Responsive Fixes --- */
 
 @media (max-width: 768px) {
