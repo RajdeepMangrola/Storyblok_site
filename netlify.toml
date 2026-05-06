@@ -1,4 +1,42 @@
+[build]
+  command   = "npm run build"
+  publish   = "build"
+
+# ── SPA redirect ─────────────────────────────────────────────────────────────
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from   = "/*"
+  to     = "/index.html"
   status = 200
+
+# ── Security headers (applied to all routes) ─────────────────────────────────
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    # Prevent MIME-type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Block clickjacking
+    X-Frame-Options = "DENY"
+
+    # Enable XSS filter in older browsers
+    X-XSS-Protection = "1; mode=block"
+
+    # Only send referrer on same-origin requests
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Restrict powerful browser features
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+    # Content Security Policy
+    # Allows: self, Storyblok CDN API, Storyblok bridge script, Framer Motion (inline styles)
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src  'self' https://app.storyblok.com;
+      style-src   'self' 'unsafe-inline';
+      img-src     'self' data: https://a.storyblok.com https://img2.storyblok.com;
+      connect-src 'self' https://api.storyblok.com https://cdn.storyblok.com;
+      font-src    'self';
+      object-src  'none';
+      frame-ancestors 'none';
+    """
