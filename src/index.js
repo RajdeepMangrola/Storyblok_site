@@ -1,53 +1,83 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { storyblokInit, apiPlugin } from '@storyblok/react';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { storyblokInit, apiPlugin } from "@storyblok/react";
+import Page from "./components/Page";
+import Teaser from "./components/Teaser";
+import Grid from "./components/Grid";
+import Feature from "./components/Feature";
+import About from "./components/About";
 
-import App from './App';
-import './index.css';
-
-// ── Components ──────────────────────────────────────────────────────────────
-import Page from './components/Page';
-import Grid from './components/Grid';
-import Feature from './components/Feature';
-import Teaser from './components/Teaser';
-import About from './components/About';
-
-// ── Security: validate env variable at startup ───────────────────────────────
 const STORYBLOK_TOKEN = process.env.REACT_APP_STORYBLOK_TOKEN;
-const STORYBLOK_VERSION = process.env.REACT_APP_STORYBLOK_VERSION || 'draft';
 
 if (!STORYBLOK_TOKEN) {
-  throw new Error(
-    '[Storyblok] REACT_APP_STORYBLOK_TOKEN is not set.\n' +
-    'Create a .env file in the project root and add:\n' +
-    'REACT_APP_STORYBLOK_TOKEN=your_preview_token_here'
-  );
+  throw new Error("[Storyblok] REACT_APP_STORYBLOK_TOKEN is not set.");
 }
 
-// ── Storyblok Init ───────────────────────────────────────────────────────────
 storyblokInit({
   accessToken: STORYBLOK_TOKEN,
   use: [apiPlugin],
-  apiOptions: {
-    // Restrict to Storyblok's CDN only — no arbitrary API calls
-    https: true,
-  },
   components: {
     page: Page,
+    teaser: Teaser,
     grid: Grid,
     feature: Feature,
-    teaser: Teaser,
     about: About,
+  },
+  apiOptions: {
+    region: "",
   },
 });
 
-// ── Export version so App.js can use it via context ──────────────────────────
-export { STORYBLOK_VERSION };
+const container = document.getElementById("app");
+const root = createRoot(container);
 
-// ── Render ───────────────────────────────────────────────────────────────────
-const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        minHeight: "100vh",
+        fontFamily: "sans-serif",
+      }}>
+        <nav style={{
+          padding: "20px",
+          background: "#fff",
+          borderBottom: "1px solid #eee",
+          display: "flex",
+          gap: "20px",
+        }}>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <Link to="/" style={{ fontWeight: "bold", textDecoration: "none", color: "#00b3b0" }}>
+              Home
+            </Link>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <Link to="/about" style={{ fontWeight: "bold", textDecoration: "none", color: "#00b3b0" }}>
+              About Me
+            </Link>
+          </motion.div>
+        </nav>
+
+        <main style={{ flex: 1 }}>
+          <App />
+        </main>
+
+        <footer style={{
+          padding: "20px",
+          borderTop: "1px solid #eee",
+          background: "#f9f9f9",
+          textAlign: "center",
+        }}>
+          <p style={{ margin: 0, color: "#666", fontSize: "0.9rem" }}>
+            Storyblok Site w/ React - Rajdeep Mangrola
+          </p>
+        </footer>
+      </div>
+    </BrowserRouter>
   </React.StrictMode>
 );
